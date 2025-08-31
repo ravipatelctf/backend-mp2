@@ -1,0 +1,82 @@
+[
+  {
+    "name": "Rohit Sharma",
+    "source": "Website",
+    "status": "New",
+    "tags": ["fiction", "student"],
+    "timeToClose": 7,
+    "priority": "High"
+  },
+  {
+    "name": "Anjali Verma",
+    "source": "Referral",
+    "status": "Contacted",
+    "tags": ["non-fiction", "business"],
+    "timeToClose": 14,
+    "priority": "Medium"
+  },
+  {
+    "name": "Karan Mehta",
+    "source": "Cold Call",
+    "status": "Qualified",
+    "tags": ["children", "educational"],
+    "timeToClose": 10,
+    "priority": "High"
+  },
+  {
+    "name": "Priya Singh",
+    "source": "Advertisement",
+    "status": "Proposal Sent",
+    "tags": ["romance", "college"],
+    "timeToClose": 21,
+    "priority": "Low"
+  },
+  {
+    "name": "Amit Patel",
+    "source": "Email",
+    "status": "Closed",
+    "tags": ["history", "academic"],
+    "timeToClose": 30,
+    "priority": "Medium"
+  },
+  {
+    "name": "Sneha Kapoor",
+    "source": "Website",
+    "status": "New",
+    "tags": ["self-help", "motivational"],
+    "timeToClose": 5,
+    "priority": "High"
+  },
+  {
+    "name": "Rahul Nair",
+    "source": "Referral",
+    "status": "Qualified",
+    "tags": ["fiction", "thriller"],
+    "timeToClose": 12,
+    "priority": "Medium"
+  },
+  {
+    "name": "Deepika Rao",
+    "source": "Cold Call",
+    "status": "Contacted",
+    "tags": ["comics", "teen"],
+    "timeToClose": 8,
+    "priority": "Low"
+  },
+  {
+    "name": "Vikram Chauhan",
+    "source": "Advertisement",
+    "status": "Proposal Sent",
+    "tags": ["fantasy", "series"],
+    "timeToClose": 20,
+    "priority": "High"
+  },
+  {
+    "name": "Neha Malhotra",
+    "source": "Email",
+    "status": "Closed",
+    "tags": ["poetry", "art"],
+    "timeToClose": 25,
+    "priority": "Medium"
+  }
+]
