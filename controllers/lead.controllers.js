@@ -24,7 +24,7 @@ async function getAllLeads(filters) {
 
 async function updateLeadById(leadId, dataToUpdate) {
     try {
-        const updatedLead = await Lead.findByIdAndUpdate(leadId, dataToUpdate, {new: true});
+        const updatedLead = await Lead.findByIdAndUpdate(leadId, dataToUpdate, {new: true}).populate("salesAgent");
         return updatedLead;
     } catch (error) {
         throw error;

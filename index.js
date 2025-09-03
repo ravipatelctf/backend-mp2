@@ -3,7 +3,7 @@ const express = require("express");
 const salesAgentRoutes = require("./routes/salesAgent.routes");
 const leadRoutes = require("./routes/lead.routes");
 const homeRoutes = require("./routes/home.routes");
-
+// const { seedLeadsCollection } = require("./seeders/leads.seeders");
 const app = express();
 app.use(express.json());
 
@@ -16,6 +16,12 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 initializeDatabase();
+
+
+// // ------------------------------------------------------------------------------------------------
+// seedLeadsCollection()
+// // ------------------------------------------------------------------------------------------------
+
 
 // b. Get All Sales Agents | 2. Sales Agents API | anvaya.api.spec
 app.use("/agents", salesAgentRoutes);
