@@ -1,5 +1,5 @@
 const Lead = require("../models/lead.models");
-
+const Comment = require("../models/comment.models");
 
 async function createNewLead(newLeadObj) {
     try {
@@ -41,5 +41,32 @@ async function deleteLeadById(leadId) {
     }
 }
 
+// -----------------------------------------------------------------------------------------------
 
-module.exports = { createNewLead, getAllLeads, updateLeadById, deleteLeadById };
+// a. Add a Comment to a Lead | 3. Comments API | anvaya.api.spec
+async function addComment(leadId, agentId, commentText) {
+    try {
+        const newComment = new Comment({lead: leadId, author: agentId, commentText: commentText});
+        const savedComment = await newComment.save();
+        console.log("savedComment:", savedComment);
+        return savedComment.populate(["lead", "author"]);
+    } catch (error) {
+        throw error;
+    }
+}
+
+
+// b. Get All Comments for a Lead | 3. Comments API | anvaya.api.spec
+async function getComments(leadId) {
+    try {
+        const allComments = await Comment.find({lead: leadId}).populate(["lead", "author"]);
+        console.log(allComments);
+        return allComments;
+    } catch (error) {
+        throw error;
+    }
+}
+
+
+
+module.exports = { createNewLead, getAllLeads, updateLeadById, deleteLeadById, addComment, getComments };

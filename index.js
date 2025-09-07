@@ -4,6 +4,8 @@ const salesAgentRoutes = require("./routes/salesAgent.routes");
 const leadRoutes = require("./routes/lead.routes");
 const homeRoutes = require("./routes/home.routes");
 // const { seedLeadsCollection } = require("./seeders/leads.seeders");
+// const { seedComments } = require("./seeders/comment.seeders");
+// const { getComments } = require("./controllers/lead.controllers");
 const app = express();
 app.use(express.json());
 
@@ -20,10 +22,12 @@ initializeDatabase();
 
 // // ------------------------------------------------------------------------------------------------
 // seedLeadsCollection()
+// seedComments();
 // // ------------------------------------------------------------------------------------------------
 
+// getComments("68bbd79fa73bc4ecf4967938");
 
-// b. Get All Sales Agents | 2. Sales Agents API | anvaya.api.spec
+// 2. Sales Agents API | anvaya.api.spec
 app.use("/agents", salesAgentRoutes);
 
 

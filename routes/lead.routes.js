@@ -1,4 +1,4 @@
-const { createNewLead, getAllLeads, updateLeadById, deleteLeadById } = require("../controllers/lead.controllers");
+const { createNewLead, getAllLeads, updateLeadById, deleteLeadById, addComment, getComments } = require("../controllers/lead.controllers");
 const express = require("express");
 const router = express.Router();
 
@@ -101,6 +101,41 @@ router.delete("/:id", async (req, res) => {
         res
             .status(404)
             .json({ "error": `Lead with ID ${req.params.id} not found.` });
+    }
+});
+
+// a. Add a Comment to a Lead | 3. Comments API | anvaya.api.spec
+router.post("/:id/comments", async (req, res) => {
+    try {
+        const { agentId, commentText} = req.body;
+        const response = await addComment(req.params.id, agentId, commentText);
+        if (response) {
+            res
+                .status(201)
+                .send(response)
+            }
+    } catch (error) {
+        res
+            .status(404)
+            .json({error: `Lead with ${req.params.id} not found!`});
+    }
+})
+
+
+// b. Get All Comments for a Lead | 3. Comments API | anvaya.api.spec
+router.get("/:id/comments", async (req, res) => {
+
+    try {
+        const response = await getComments(req.params.id);
+        if (response) {
+            res
+                .status(200)
+                .send(response)
+            }
+    } catch (error) {
+        res
+            .status(404)
+            .json({error: `Lead with ${req.params.id} not found!`});
     }
 })
 
