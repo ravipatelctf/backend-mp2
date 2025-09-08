@@ -21,5 +21,13 @@ async function getAllSalesAgents() {
     }
 }
 
+async function deleteAgentById(agentId) {
+    try {
+        const salesAgents = await SalesAgent.findByIdAndDelete(agentId);
+        return salesAgents;
+    } catch (error) {
+        throw error;
+    }
+}
 
-module.exports = { createNewSalesAgent, getAllSalesAgents };
+module.exports = { createNewSalesAgent, getAllSalesAgents, deleteAgentById };

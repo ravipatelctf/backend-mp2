@@ -1,4 +1,4 @@
-const { createNewLead, getAllLeads, updateLeadById, deleteLeadById, addComment, getComments } = require("../controllers/lead.controllers");
+const { createNewLead, getAllLeads, updateLeadById, deleteLeadById, addComment, getComments, deleteCommentById } = require("../controllers/lead.controllers");
 const express = require("express");
 const router = express.Router();
 
@@ -88,7 +88,7 @@ router.delete("/:id", async (req, res) => {
     if (!req.params.id) {
         res
             .status(400)
-            .json({ error: "Lead id ir required." });
+            .json({ error: "Lead id is required." });
     }
     try {
         const deletedLead = await deleteLeadById(req.params.id);
@@ -138,6 +138,28 @@ router.get("/:id/comments", async (req, res) => {
             .json({error: `Lead with ${req.params.id} not found!`});
     }
 })
+
+
+// Delete a Comment 
+router.delete("/:id/comments", async (req, res) => {
+    if (!req.params.id) {
+        res
+            .status(400)
+            .json({ error: "comment id is required." });
+    }
+    try {
+        const deletedComment = await deleteCommentById(req.params.id);
+        if (deletedComment) {
+            res
+                .status(200)
+                .json({ "message": "Comment deleted successfully." })
+        }
+    } catch (error) {
+        res
+            .status(404)
+            .json({ "error": `Comment with ID ${req.params.id} not found.` });
+    }
+});
 
 
 module.exports = router;

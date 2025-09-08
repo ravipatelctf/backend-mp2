@@ -48,7 +48,7 @@ async function addComment(leadId, agentId, commentText) {
     try {
         const newComment = new Comment({lead: leadId, author: agentId, commentText: commentText});
         const savedComment = await newComment.save();
-        console.log("savedComment:", savedComment);
+        // console.log("savedComment:", savedComment);
         return savedComment.populate(["lead", "author"]);
     } catch (error) {
         throw error;
@@ -60,7 +60,6 @@ async function addComment(leadId, agentId, commentText) {
 async function getComments(leadId) {
     try {
         const allComments = await Comment.find({lead: leadId}).populate(["lead", "author"]);
-        console.log(allComments);
         return allComments;
     } catch (error) {
         throw error;
@@ -68,5 +67,15 @@ async function getComments(leadId) {
 }
 
 
+async function deleteCommentById(commentId) {
+    try {
+        const deletedComment = await Comment.findByIdAndDelete(commentId);
+        return deletedComment;
+    } catch (error) {
+        throw error;
+    }
+}
 
-module.exports = { createNewLead, getAllLeads, updateLeadById, deleteLeadById, addComment, getComments };
+
+
+module.exports = { createNewLead, getAllLeads, updateLeadById, deleteLeadById, addComment, getComments, deleteCommentById };

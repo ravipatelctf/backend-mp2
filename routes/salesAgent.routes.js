@@ -1,4 +1,4 @@
-const { createNewSalesAgent, getAllSalesAgents } = require("../controllers/salesAgent.controllers");
+const { createNewSalesAgent, getAllSalesAgents, deleteAgentById } = require("../controllers/salesAgent.controllers");
 const express = require("express");
 const SalesAgent = require("../models/salesAgent.models");
 const router = express.Router();
@@ -51,6 +51,28 @@ router.get("/", async (req, res) => {
         res
             .status(500)
             .json({ error: "Failed to fetch data!" })
+    }
+});
+
+
+// Delete agent 
+router.delete("/:id", async (req, res) => {
+    if (!req.params.id) {
+        res
+            .status(400)
+            .json({ error: "agent id is required." });
+    }
+    try {
+        const deletedComment = await deleteAgentById(req.params.id);
+        if (deletedComment) {
+            res
+                .status(200)
+                .json({ "message": "Agent deleted successfully." })
+        }
+    } catch (error) {
+        res
+            .status(404)
+            .json({ "error": `Agent with ID ${req.params.id} not found.` });
     }
 });
 
